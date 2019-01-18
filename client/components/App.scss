@@ -1,0 +1,58 @@
+/* 
+.App {}
+.App-logo {}
+.App-header {}
+.App-link {}
+@keyframes App-logo-spin {}
+ */
+
+
+ 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.todo-list {
+  --todo-list-padding: 10px;
+  --hearder-height: 50px;
+  --gray-color: #919191;
+  max-width: 800px;
+  margin: 10px;
+  box-shadow: 0 0 5px 0px;
+}
+.todo-list_toolbar {
+  border-top: 1px solid var(--gray-color);
+  height: var(--hearder-height);
+  padding: var(--todo-list-padding);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+} 
+.todo-list_add-task-input {
+  display: block;
+  width: 100%;
+  border-width: 0;
+  border-bottom: 1px solid var(--gray-color);
+}
+.todo-list_content_item,
+.todo-list_content_empty {
+  padding: 8px var(--todo-list-padding);
+}
+.todo-list_add-task-input {
+  height: var(--hearder-height);
+  padding: var(--todo-list-padding);
+}
+.todo-list_toolbar_items-amount {
+  flex-grow: 1;
+}
+.todo-list_toolbar_button {
+  height: 30px;
+  min-width: 50px;
+}
+.todo-list_toolbar_button:not(:first-of-type) {
+  margin-left: 5px;
+}
+.todo-list_content_empty {
+  text-align: center;
+}
