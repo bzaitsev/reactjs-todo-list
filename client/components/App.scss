@@ -1,3 +1,5 @@
+@import '~normalize.css/normalize.css';
+
 /* 
 .App {}
 .App-logo {}
@@ -6,12 +8,15 @@
 @keyframes App-logo-spin {}
  */
 
-
- 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .todo-list {
   --todo-list-padding: 10px;
