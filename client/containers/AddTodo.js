@@ -13,7 +13,7 @@ const AddTodo = ({ dispatch }) => {
   };  
   
   return (
-    <input type="text" placeholder="Add a task ..." className="todo-list_add-task-input" onKeyUp={onInputKeyUp}/>
+    <input type="text" placeholder="Type a task and press Enter ..." className="todo-list_add-task-input" onKeyUp={onInputKeyUp}/>
   );
 };
 

@@ -11,10 +11,3 @@ render(
   </Provider>,
   document.getElementById('app')
 );
-
-/* Todo
-1) hide footer when list is empty
-2) checked state
-3) total count
-4) remove action
-*/
