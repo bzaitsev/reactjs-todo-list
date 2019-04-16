@@ -1,19 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { addTodo } from '../actions';
 
 const AddTodo = ({ dispatch }) => {
-  let onInputKeyUp = function(event) {
-    if (event.keyCode !== 13) return; // <Enter>
-  
-    let input = event.target;
+  let inputElement;
 
-    dispatch(addTodo(input.value));
-    input.value = '';  
-  };  
+  const onSubmit = event => {
+    event.preventDefault();
+
+    if (!inputElement.value.trim()) return;
+
+    dispatch(addTodo(inputElement.value));
+    inputElement.value = '';
+  };
   
   return (
-    <input type="text" placeholder="Type a task and press Enter ..." className="todo-list_add-task-input" onKeyUp={onInputKeyUp}/>
+    <form onSubmit={onSubmit}>
+      <input type="text" required placeholder="Type a task and press Enter ..." className="todo-list_add-task-input" ref={node => (inputElement = node)}/>
+    </form>
   );
 };
 

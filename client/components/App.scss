@@ -1,12 +1,10 @@
 @import '~normalize.css/normalize.css';
 
-/* 
-.App {}
-.App-logo {}
-.App-header {}
-.App-link {}
-@keyframes App-logo-spin {}
- */
+html {
+  --todo-list-padding: 10px;
+  --hearder-height: 50px;
+  --gray-color: #919191;  
+}
 
 *,
 *::before,
@@ -19,9 +17,6 @@ ul, ol {
   margin: 0;
 }
 .todo-list {
-  --todo-list-padding: 10px;
-  --hearder-height: 50px;
-  --gray-color: #919191;
   max-width: 800px;
   margin: 10px;
   box-shadow: 0 0 5px 0px;
@@ -60,4 +55,25 @@ ul, ol {
 }
 .todo-list_content_empty {
   text-align: center;
+}
+.display-none {
+  display: none;
+}
+
+.Todo {
+  position: relative;
+  &:hover {
+    .Todo__toolbar {
+      display: block;
+    }
+  }
+}
+
+.Todo__toolbar {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: var(--todo-list-padding);
+  cursor: pointer;
 }

@@ -2,14 +2,14 @@ import React from 'react';
 
 import AddTodo from '../containers/AddTodo';
 import VisibleTodoList from '../containers/VisibleTodoList';
-import Footer from './Footer';
-import './App.scss';
+import DynamicFooter from '../containers/DynamicFooter';
+import './App.scss'; 
 
 const App = () => (
   <div className='todo-list'>
     <AddTodo />
     <VisibleTodoList />
-    <Footer />    
+    <DynamicFooter />
   </div>
 );
 
