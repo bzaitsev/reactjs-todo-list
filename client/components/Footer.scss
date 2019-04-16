@@ -6,3 +6,27 @@
   align-items: center;
   justify-content: space-between;
 } 
+.Footer__btn-link {
+  background: none;
+  border: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:disabled {
+    text-decoration: none;
+  }
+}
+
+.Footer button {
+  height: 30px;
+  min-width: 50px;
+  outline: none;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
+  &:not(:first-of-type) {
+    margin-left: 5px;
+  }
+}

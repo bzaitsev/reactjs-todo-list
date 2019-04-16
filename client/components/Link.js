@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './Link.scss';
+
 const Link = ({ active, children, onClick }) => (
-  <button className='todo-list_toolbar_button'
+  <button className='Link'
      onClick={onClick}
      disabled={active}
-     style={{
-         marginLeft: '4px',
-     }}
-  >
-    {children}
-  </button>
+  >{children}</button>
 );
 
 Link.propTypes = {

@@ -4,10 +4,12 @@ import FilterLink from '../containers/FilterLink';
 import { VisibilityFilters } from '../actions';
 import './Footer.scss'; 
 
-const Footer = ({todosAmount, incompleteAmount}) => {
+const Footer = ({todosAmount, incompleteAmount, clearCompleted}) => {
   let footerClass = todosAmount === 0 
     ? 'display-none' 
     : 'Footer';
+
+  const noCompleted = (todosAmount - incompleteAmount) === 0;
 
   return (
     <footer className={footerClass}>
@@ -22,6 +24,7 @@ const Footer = ({todosAmount, incompleteAmount}) => {
         <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>
           Completed
         </FilterLink>
+        <button type="button" disabled={noCompleted} className="Footer__btn-link" onClick={() => clearCompleted()}>Clear completed</button>
       </div>
     </footer>
   );
