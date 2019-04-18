@@ -1,4 +1,6 @@
 .Todo {
+  position: relative;
+  padding: 8px var(--todo-list-padding);
   cursor: default;
 
   &:not(:last-child) {
@@ -7,19 +9,16 @@
   &:first-child {
     border-top: 1px solid var(--gray-color);
   }
-}
-
-.Todo__remove-btn {
-  font-size: 14px;
-}
-.Todo {
-  padding: 8px var(--todo-list-padding);
+  &:hover {
+    .Todo__toolbar {
+      display: block;
+    }
+  }
 }
 .Todo_completed {
   text-decoration: line-through;
   color: #bbb;
 }
-
 .Todo_enter {
   opacity: 0;
   transition: opacity 500ms;
@@ -33,4 +32,15 @@
 }
 .Todo_leave-active {
   opacity: 0;
+}
+.Todo__toolbar {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: var(--todo-list-padding);
+  cursor: pointer;
+}
+.Todo__remove-btn {
+  font-size: 14px;
 }

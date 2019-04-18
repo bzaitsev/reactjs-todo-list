@@ -6,16 +6,16 @@ import Todo from './Todo';
 import { VisibilityFilters } from '../actions';
 
 const TodoList = ({ todos, toggleTodo, removeTodo, visibilityFilter }) => (
-  <ul className='todo-list_content'>
+  <ul>
     <ReactCSSTransitionGroup
-    transitionName={{
-      enter: 'Todo_enter',
-      leave: 'Todo_leave'
-    }}
-    transitionEnter={visibilityFilter === VisibilityFilters.SHOW_ALL}
-    transitionLeave={visibilityFilter === VisibilityFilters.SHOW_ALL && !!todos.length}
-    transitionEnterTimeout={500}
-    transitionLeaveTimeout={300}>
+      transitionName={{
+        enter: 'Todo_enter',
+        leave: 'Todo_leave'
+      }}
+      transitionEnter={visibilityFilter === VisibilityFilters.SHOW_ALL}
+      transitionLeave={visibilityFilter === VisibilityFilters.SHOW_ALL && !!todos.length}
+      transitionEnterTimeout={500}
+      transitionLeaveTimeout={300}>
       {todos.map(todo =>
         <Todo
           key={todo.id}

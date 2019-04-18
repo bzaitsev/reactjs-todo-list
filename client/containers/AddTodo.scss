@@ -1,3 +1,10 @@
 .AddTodo {
   flex-grow: 1;
 }
+.AddTodo__input {
+  display: block;
+  width: 100%;
+  height: var(--hearder-height);
+  border-width: 0;
+  outline: none;
+}

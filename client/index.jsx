@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import App from './components/App';
 import appStore from './stores/appStore';
+import './index.scss';
 
 render(
   <Provider store={appStore}>

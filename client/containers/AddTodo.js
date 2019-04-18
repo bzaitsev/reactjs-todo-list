@@ -5,10 +5,11 @@ import { addTodo } from '../actions';
 import './AddTodo.scss';
 
 const AddTodo = ({ dispatch }) => {
-  let inputElement;
+  let inputRef = React.createRef();
 
   const onSubmit = event => {
     event.preventDefault();
+    let inputElement = inputRef.current;
 
     if (!inputElement.value.trim()) return;
 
@@ -18,7 +19,7 @@ const AddTodo = ({ dispatch }) => {
   
   return (
     <form onSubmit={onSubmit} className="AddTodo">
-      <input type="text" required placeholder="Type a task and press <Enter>..." className="todo-list_add-task-input" ref={node => (inputElement = node)}/>
+      <input type="text" required placeholder="Type a task and press <Enter>..." className="AddTodo__input" ref={inputRef}/>
     </form>
   );
 };

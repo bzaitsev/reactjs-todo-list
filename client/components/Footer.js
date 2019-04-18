@@ -26,7 +26,11 @@ const Footer = ({todosAmount, incompleteAmount, clearCompleted}) => {
         <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>
           Completed
         </FilterLink>
-        <button type="button" disabled={noCompleted} className="Footer__btn-link" onClick={() => clearCompleted()}>Clear completed</button>
+        <button 
+          type="button" 
+          disabled={noCompleted} 
+          className="Footer__btn-link" 
+          onClick={() => clearCompleted()} >Clear completed</button>
       </div>
     </footer>
   );

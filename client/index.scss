@@ -1,0 +1,35 @@
+@import '~normalize.css/normalize.css';
+
+html {
+  --todo-list-padding: 10px;
+  --hearder-height: 50px;
+  --gray-color: #919191;  
+
+  font-family: sans-serif;
+  font-size: 15px;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+}
+button {
+  cursor: pointer;
+}
+.display-none {
+  display: none;
+}
+.visibility-hidden {
+  visibility: hidden;
+}
