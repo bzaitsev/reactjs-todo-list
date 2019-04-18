@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import './Todo.scss';
 
@@ -9,22 +10,22 @@ class Todo extends React.Component {
   }
 
   render () {
+    let rootClass = classNames({
+      'Todo': true,
+      'Todo_completed': this.props.completed
+    });
+
     return (
-      <li className='todo-list_content_item Todo'
-        onClick={this.props.onClick}
-        style={{
-          textDecoration: this.props.completed ? 'line-through' : 'none'
-        }}>
-        
-        <label className="Todo__text">
-          <input type="checkbox" checked={this.props.completed} readOnly />{this.props.text}
-        </label>
+      <li className={rootClass}
+        onClick={this.props.onClick} >
+
+        <input type="checkbox" checked={this.props.completed} readOnly />{this.props.text}
 
         <div className="Todo__toolbar">
           <button 
+            title="Remove item"
             className="Todo__remove-btn"
-            onClick={this.props.onRemove}
-          >X</button>
+            onClick={this.props.onRemove}>X</button>
         </div>
       </li>
     );

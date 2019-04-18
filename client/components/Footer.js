@@ -1,13 +1,15 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import FilterLink from '../containers/FilterLink';
 import { VisibilityFilters } from '../actions';
 import './Footer.scss'; 
 
 const Footer = ({todosAmount, incompleteAmount, clearCompleted}) => {
-  let footerClass = todosAmount === 0 
-    ? 'display-none' 
-    : 'Footer';
+  let footerClass = classNames({
+    'Footer': true,
+    'Footer_hidden': todosAmount === 0
+  });
 
   const noCompleted = (todosAmount - incompleteAmount) === 0;
 

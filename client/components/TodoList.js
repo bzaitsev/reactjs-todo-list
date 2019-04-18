@@ -1,17 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Todo from './Todo';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-const TodoList = ({ todos, toggleTodo, removeTodo }) => (
+import Todo from './Todo';
+import { VisibilityFilters } from '../actions';
+
+const TodoList = ({ todos, toggleTodo, removeTodo, visibilityFilter }) => (
   <ul className='todo-list_content'>
-    {todos.map(todo =>
-      <Todo
-        key={todo.id}
-        {...todo}
-        onClick={() => toggleTodo(todo.id)}
-        onRemove={() => removeTodo(todo.id)}
-      />
-    )}
+    <ReactCSSTransitionGroup
+    transitionName={{
+      enter: 'Todo_enter',
+      leave: 'Todo_leave'
+    }}
+    transitionEnter={visibilityFilter === VisibilityFilters.SHOW_ALL}
+    transitionLeave={visibilityFilter === VisibilityFilters.SHOW_ALL && !!todos.length}
+    transitionEnterTimeout={500}
+    transitionLeaveTimeout={300}>
+      {todos.map(todo =>
+        <Todo
+          key={todo.id}
+          {...todo}
+          onClick={() => toggleTodo(todo.id)}
+          onRemove={() => removeTodo(todo.id)}/>
+      )}
+    </ReactCSSTransitionGroup>
   </ul>
 );
 

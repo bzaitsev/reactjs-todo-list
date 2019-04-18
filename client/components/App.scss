@@ -21,14 +21,18 @@ ul, ol {
 }
 [type="checkbox"] {
   margin-right: 10px;
+  width: 18px;
+  vertical-align: text-bottom;
+  height: 18px;
 }
 button {
   cursor: pointer;
 }
 .todo-list {
   max-width: 800px;
+  min-width: 550px;
   margin: 10px;
-  box-shadow: 0 0 5px 0px;
+  box-shadow: 0 0 5px 0 #bbb;
 }
 .todo-list_toolbar {
   border-top: 1px solid var(--gray-color);
@@ -43,7 +47,6 @@ button {
   width: 100%;
   border-width: 0;
   outline: none;
-  // border-bottom: 1px solid var(--gray-color);
 }
 .todo-list_content_item,
 .todo-list_content_empty {
@@ -51,7 +54,6 @@ button {
 }
 .todo-list_add-task-input {
   height: var(--hearder-height);
-  // padding: var(--todo-list-padding);
 }
 .todo-list_toolbar_items-amount {
   flex-grow: 1;

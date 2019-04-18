@@ -8,7 +8,7 @@ const Header = ({toggleAllTodos, hasIncomplete, noItems}) => {
 
   return (
     <header className="Header">
-      <input type="checkbox" className={checkboxClass} checked={!hasIncomplete} onChange={() => toggleAllTodos()} />
+      <input type="checkbox" className={checkboxClass} checked={!hasIncomplete} onChange={() => toggleAllTodos()} title="Toggle all" />
       <AddTodo />
     </header>
   );
