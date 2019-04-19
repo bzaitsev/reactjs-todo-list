@@ -14,6 +14,10 @@ html {
   font-size: 15px;
 }
 body {
+  width: 100%;
+  max-width: 800px;
+  min-width: 550px;
+  margin: 0 auto;
   height: 100vh;
   min-height: 250px;
   display: flex;
