@@ -3,4 +3,8 @@
   min-width: 550px;
   margin: 10px;
   box-shadow: 0 0 5px 0 #bbb;
+  margin: 0 auto 0px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;  
 }

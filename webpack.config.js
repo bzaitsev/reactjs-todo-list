@@ -1,7 +1,8 @@
 const path = require('path'), 
       ExtractTextPlugin = require("extract-text-webpack-plugin"),
-      HtmlWebPackPlugin = require("html-webpack-plugin"),
-      CLIENT_PATH = path.resolve(__dirname, 'client'),
+      HtmlWebPackPlugin = require("html-webpack-plugin");
+
+const CLIENT_PATH = path.resolve(__dirname, 'client'),
       PUBLIC_PATH = path.resolve(__dirname, 'public');
 
 let config = {
@@ -24,6 +25,12 @@ let config = {
   module: {
     rules: [
       {
+        test: /\.(gif|png|jpe?g|svg|ico)$/i,
+        include: [
+          CLIENT_PATH
+        ],
+        loader: 'file-loader'
+      }, {
         test: /\.(js|jsx)$/,
         include: [
           CLIENT_PATH
