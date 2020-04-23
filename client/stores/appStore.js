@@ -1,6 +1,10 @@
-import { createStore } from 'redux';
+
+import { configureStore } from "@reduxjs/toolkit";
 
 import rootReducer from '../reducers';
 
-const appStore = createStore(rootReducer);
+const appStore = configureStore({
+  reducer: rootReducer,
+});
+
 export default appStore;

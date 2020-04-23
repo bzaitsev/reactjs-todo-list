@@ -1,16 +1,24 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-import Header from '../containers/Header';
-import VisibleTodoList from '../containers/VisibleTodoList';
-import DynamicFooter from '../containers/DynamicFooter';
 import './App.scss'; 
+import TodoPage from './TodoPage';
+import HomePage from './HomePage';
+import NotFound from './NotFound';
 
 const App = () => (
-  <div className='App'>
-    <Header />
-    <VisibleTodoList />
-    <DynamicFooter />
-  </div>
+  <Router>
+     <Switch>
+       <Route path="/todolist/:listId" component={TodoPage}/>
+       <Route path="/" component={HomePage}/>
+       <Route component={NotFound} />
+     </Switch>
+  </Router>
 );
-
+ 
 export default App;

@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {
+  useParams
+} from "react-router-dom";
 
 import Todo from './Todo';
 import { VisibilityFilters } from '../actions';
@@ -8,6 +11,8 @@ import './TodoList.scss';
 
 const TodoList = ({ todos, toggleTodo, removeTodo, visibilityFilter }) => {
   if (!todos.length) return null;
+
+  const {listId} = useParams();
 
   return (
     <ul className='TodoList'>
@@ -24,8 +29,8 @@ const TodoList = ({ todos, toggleTodo, removeTodo, visibilityFilter }) => {
           <Todo
             key={todo.id}
             {...todo}
-            onClick={() => toggleTodo(todo.id)}
-            onRemove={() => removeTodo(todo.id)}/>
+            onClick={() => toggleTodo(todo.id, listId)}
+            onRemove={() => removeTodo(todo.id, listId)}/>
         )}
       </ReactCSSTransitionGroup>
     </ul>
@@ -34,7 +39,7 @@ const TodoList = ({ todos, toggleTodo, removeTodo, visibilityFilter }) => {
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired
   }).isRequired).isRequired,

@@ -3,17 +3,20 @@ const path = require('path'),
       HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const CLIENT_PATH = path.resolve(__dirname, 'client'),
-      PUBLIC_PATH = path.resolve(__dirname, 'public');
+      PUBLIC_PATH = path.resolve(__dirname, 'public'),
+      normalizeCssPath = path.resolve(__dirname, 'node_modules/normalize.css/');
 
 let config = {
   entry: path.resolve(CLIENT_PATH, 'index.jsx'),
   output: {
     path: PUBLIC_PATH,
-    filename: 'build/app.js'
+    filename: 'build/app.js',
+    publicPath: '/'
   },
   devServer: {
     overlay: true,
-    contentBase: PUBLIC_PATH
+    contentBase: PUBLIC_PATH,
+    historyApiFallback: true
   },
   plugins: [
     new ExtractTextPlugin('build/app.css'),
@@ -25,7 +28,7 @@ let config = {
   module: {
     rules: [
       {
-        test: /\.(gif|png|jpe?g|svg|ico)$/i,
+        test: /\.(gif|png|jpe?g|svg|ico|eot|ttf|woff|woff2|otf)$/i,
         include: [
           CLIENT_PATH
         ],
@@ -37,9 +40,10 @@ let config = {
         ],
         loader: 'babel-loader'
       }, {
-        test: /\.scss$/,
+        test: /\.scss$|\.css$/,
         include: [
-          CLIENT_PATH
+          CLIENT_PATH,
+          normalizeCssPath
         ],
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',

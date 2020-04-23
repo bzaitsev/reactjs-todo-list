@@ -16,14 +16,18 @@ const getVisibleTodos = (todos, filter) => {
   }
 };
 
-const mapStateToProps = state => ({
-  todos: getVisibleTodos(state.todos, state.visibilityFilter),
-  visibilityFilter: state.visibilityFilter
-});
+const mapStateToProps = state => {
+  const todo = state.todos.filter(todo => todo.id === state.listId)[0];
+
+  return {
+    todos: getVisibleTodos(todo.items, state.visibilityFilter),
+    visibilityFilter: state.visibilityFilter
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
-  toggleTodo: id => dispatch(toggleTodo(id)),
-  removeTodo: id => dispatch(removeTodo(id))
+  toggleTodo: (id, listId) => dispatch(toggleTodo(id, listId)),
+  removeTodo: (id, listId) => dispatch(removeTodo(id, listId))
 });
 
 export default connect(

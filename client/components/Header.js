@@ -1,10 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
+import {
+  useParams
+} from "react-router-dom";
 
 import AddTodo from '../containers/AddTodo';
 import './Header.scss';
 
 const Header = ({toggleAllTodos, hasIncomplete, noItems}) => {
+  const {listId} = useParams();
+
   let checkboxClass = classNames({
     'visibility-hidden': noItems
   });
@@ -15,7 +20,7 @@ const Header = ({toggleAllTodos, hasIncomplete, noItems}) => {
         type="checkbox" 
         className={checkboxClass} 
         checked={!hasIncomplete} 
-        onChange={() => toggleAllTodos()} 
+        onChange={() => toggleAllTodos(listId)} 
         title="Toggle all" />
       <AddTodo />
     </header>

@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {
+  useParams
+} from "react-router-dom";
 
 import { addTodo } from '../actions';
 import './AddTodo.scss';
 
 const AddTodo = ({ dispatch }) => {
   let inputRef = React.createRef();
+  const {listId} = useParams();
 
   const onSubmit = event => {
     event.preventDefault();
@@ -13,7 +17,7 @@ const AddTodo = ({ dispatch }) => {
 
     if (!inputElement.value.trim()) return;
 
-    dispatch(addTodo(inputElement.value));
+    dispatch(addTodo(inputElement.value, listId));
     inputElement.value = '';
   };
   

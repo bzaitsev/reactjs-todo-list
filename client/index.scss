@@ -1,11 +1,10 @@
-@import '~normalize.css/normalize.css';
-
-*,
+  
+*,  
 *::before,
 *::after {
   box-sizing: border-box;
 }
-html {
+html { 
   --todo-list-padding: 10px;
   --hearder-height: 50px;
   --gray-color: #e6e6e6;  
@@ -18,8 +17,7 @@ body {
   max-width: 800px;
   min-width: 550px;
   margin: 0 auto;
-  height: 100vh;
-  min-height: 250px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -50,10 +48,17 @@ button {
   padding: 5vh 10px 15px;
 }
 .site-footer {
-  height: 40px;
+  margin-top: 10px;
+  height: 45px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; 
+}
+.center-align {
+  display: flex;
+  align-items: center; // V for line
+  justify-content: center; // H for line
 }
 .site-footer .inline-logo {
   width: 16px;

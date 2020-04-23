@@ -1,11 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
+import {
+  useParams
+} from "react-router-dom";
 
 import FilterLink from '../containers/FilterLink';
 import { VisibilityFilters } from '../actions';
 import './Footer.scss'; 
 
 const Footer = ({todosAmount, incompleteAmount, clearCompleted}) => {
+  const {listId} = useParams();
+
   let footerClass = classNames({
     'Footer': true,
     'Footer_hidden': todosAmount === 0
@@ -30,7 +35,7 @@ const Footer = ({todosAmount, incompleteAmount, clearCompleted}) => {
           type="button" 
           disabled={noCompleted} 
           className="Footer__btn-link" 
-          onClick={() => clearCompleted()} >Clear completed</button>
+          onClick={() => clearCompleted(listId)} >Clear completed</button>
       </div>
     </footer>
   );

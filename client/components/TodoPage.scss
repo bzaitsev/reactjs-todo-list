@@ -1,0 +1,13 @@
+.TodoPage {
+  h1 {
+    text-align: center;
+  }
+}
+
+.TodoPage_Todo {
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;  
+  box-shadow: 0 0 5px 0 #bbb;
+}
+  
