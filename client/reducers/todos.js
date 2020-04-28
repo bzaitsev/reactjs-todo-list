@@ -1,7 +1,14 @@
 import shortid from 'shortid';
 import { createReducer } from "@reduxjs/toolkit";
 
-const todos = createReducer([], {
+const initialList = {
+  id: shortid.generate(),
+  title: "New list",
+  editDate: Date.now(),
+  items: []
+};
+
+const todos = createReducer([initialList], {
   'ADD_TODO_LIST': (state, action) => {
     return [
       ...state,
@@ -61,12 +68,10 @@ const todos = createReducer([], {
     return state.filter(list => list.id !== action.id);
   },
   'RENAME_LIST': (state, action) => {
-    return state.map(list => {
+    return state.forEach(list => {
       if (list.id === action.id) {
         list.title = action.title;
       } 
-
-      return list;
     });
   },
   'SET_LIST_EDIT_DATE': (state, action) => {

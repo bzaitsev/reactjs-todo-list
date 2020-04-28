@@ -39,12 +39,7 @@ const HomePage = ({ todos, dispatch }) => {
                 <span className="title">{todo.title}</span>
                 {/* <span className="edit-date">Opened {todo.editDate}</span> */}
               </div>
-              {/* <TodoMenu listId={todo.id}/> */}
-              <Tooltip title="Delete">
-                <Button className="remove-btn" onClick={onListDelete} data-id={todo.id}>
-                  <i className="far fa-trash-alt remove-icon"></i> 
-                </Button>              
-              </Tooltip>
+              <TodoMenu listId={todo.id} title={todo.title}/>
             </Link>
           </li>
         ))}
