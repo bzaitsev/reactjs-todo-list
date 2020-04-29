@@ -2,14 +2,12 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
-
 import './App.scss'; 
-import TodoPage from './TodoPage';
-import HomePage from './HomePage';
-import NotFound from './NotFound';
+import TodoPage from './../containers/pages/TodoPage';
+import HomePage from './../containers/pages/HomePage';
+import NotFound from './../containers/pages/NotFound';
 
 const App = () => (
   <Router>

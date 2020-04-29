@@ -4,9 +4,9 @@ import {
 } from "react-router-dom";
 import { connect } from 'react-redux';
 // App
-import Header from '../containers/Header';
-import VisibleTodoList from '../containers/VisibleTodoList';
-import DynamicFooter from '../containers/DynamicFooter';
+import Header from './../Header';
+import VisibleTodoList from './../VisibleTodoList';
+import DynamicFooter from './../DynamicFooter';
 import './TodoPage.scss'; 
 
 const TodoPage = ({todo}) => {
@@ -20,7 +20,7 @@ const TodoPage = ({todo}) => {
       <h1>
         {todo.title} 
       </h1>
-      <div className="TodoPage_Todo">
+      <div className="TodoPage__Todo">
         <Header />
         <VisibleTodoList />
         <DynamicFooter />

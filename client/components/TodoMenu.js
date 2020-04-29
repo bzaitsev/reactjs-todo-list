@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 // App
@@ -20,47 +19,55 @@ const TodoMenu = function({dispatch, listId, title}) {
   const [open, setOpen] = React.useState(false);
   const [listTitle, setListTitle] = React.useState(title);
   const [titleInvalid, setTitleInvalid] = React.useState(false);
+  
   // Menu
-  const closeMenu = event => {
+  const onMenuClose = event => {
     event.preventDefault();
     setAnchorEl(null);
-  }
+  };
+
   const onMenuClick = event => {
     event.preventDefault();
     setAnchorEl(event.currentTarget);
   };
+
   const onMenuRename = event => {
-    closeMenu(event);
+    onMenuClose(event);
     onDialogOpen();
   }; 
+
   const onMenuDelete = event => {
     dispatch(removeList(listId));
-    closeMenu(event);
-  }; 
-  const onMenuClose = event => {
-    closeMenu(event);
-  }; 
+    onMenuClose(event);
+  };  
+
   // Dialog
   const onDialogClick = event => {
     event.preventDefault();
   }; 
+
   const onDialogOpen = () => {
     setOpen(true);
     setListTitle(title);
   };
+
   const onDialogClose = event => {
-    closeMenu(event);
+    onMenuClose(event);
     setOpen(false);
   };
+
   const onDialogSave = event => {
-    closeMenu(event);
+    onMenuClose(event);
+
     if (!listTitle) {
       return;
     } else {
       dispatch(renameList(listId, listTitle));
     }
+    
     setOpen(false);
   }; 
+
   //
   const onListTitleChange = event => {
     let value = event.target.value;

@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import {
   useParams
 } from "react-router-dom";
-
 import AddTodo from '../containers/AddTodo';
 import './Header.scss';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
+// App
 import './Todo.scss';
 
 class Todo extends React.Component {
@@ -12,7 +12,7 @@ class Todo extends React.Component {
   render () {
     let rootClass = classNames({
       'Todo': true,
-      'Todo_completed': this.props.completed
+      'Todo--completed': this.props.completed
     });
 
     return (
@@ -37,5 +37,6 @@ Todo.propTypes = {
   completed: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired
 };
+
 
 export default Todo;

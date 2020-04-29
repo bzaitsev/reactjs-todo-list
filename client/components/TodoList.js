@@ -4,7 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {
   useParams
 } from "react-router-dom";
-
+// App
 import Todo from './Todo';
 import { VisibilityFilters } from '../actions';
 import './TodoList.scss';

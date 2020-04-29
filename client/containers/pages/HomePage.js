@@ -2,15 +2,12 @@ import React from 'react';
 import {
   Link
 } from "react-router-dom";
-import IconButton from '@material-ui/core/IconButton';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { connect } from 'react-redux';
-import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
-
+// App
 import './HomePage.scss'; 
-import TodoMenu from './TodoMenu';
-import { addTodoList, setListId, removeList } from '../actions';
+import TodoMenu from './../../components/TodoMenu';
+import { addTodoList, setListId, removeList } from './../../actions';
 
 const HomePage = ({ todos, dispatch }) => {
   const onAddClick = () => {
@@ -30,10 +27,10 @@ const HomePage = ({ todos, dispatch }) => {
     <div className='HomePage'>
       <h1>All todos</h1>
   
-      <ul className="Homepage_List">
+      <ul className="Homepage__List">
         {todos.map(todo => (
           <li key={todo.id}>
-            <Link className="HomePage_Item" to={`/todolist/${todo.id}`} onClick={onItemClick} data-id={todo.id}>
+            <Link className="HomePage__Item" to={`/todolist/${todo.id}`} onClick={onItemClick} data-id={todo.id}>
               <i className="fas fa-list-ul list-icon"></i>
               <div className="info">
                 <span className="title">{todo.title}</span>
@@ -45,7 +42,7 @@ const HomePage = ({ todos, dispatch }) => {
         ))}
         <li>
           <Tooltip title="Add list">
-            <div className="HomePage_Item HomePage_ItemAdd" onClick={onAddClick}>
+            <div className="HomePage__Item HomePage__NewItem" onClick={onAddClick}>
               <i className="fas fa-plus-circle icon-add-list"></i>
             </div>
           </Tooltip>

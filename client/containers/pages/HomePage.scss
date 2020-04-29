@@ -5,7 +5,7 @@
   }
 }
 
-.Homepage_List {
+.Homepage__List {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
@@ -15,7 +15,7 @@
   }
 }
 
-.HomePage_Item {
+.HomePage__Item {
   --icon-margin: 15px;
   --icon-size: 20px;
   --info-padding: 1px;
@@ -54,7 +54,7 @@
   }
 }
 
-.HomePage_ItemAdd {
+.HomePage__NewItem {
   padding: 9px 15px;
   justify-content: center;
   border-style: dashed;

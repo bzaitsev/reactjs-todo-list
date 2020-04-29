@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-
+// App
 import Footer from '../components/Footer';
 import {clearCompleted} from '../actions';
 

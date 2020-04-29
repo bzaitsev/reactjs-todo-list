@@ -1,5 +1,5 @@
 import React from 'react';
-
+// App
 import './NotFound.scss'; 
 
 const NotFound = () => (

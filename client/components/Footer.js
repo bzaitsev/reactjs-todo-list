@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import {
   useParams
 } from "react-router-dom";
-
 import FilterLink from '../containers/FilterLink';
 import { VisibilityFilters } from '../actions';
 import './Footer.scss'; 
@@ -13,7 +12,7 @@ const Footer = ({todosAmount, incompleteAmount, clearCompleted}) => {
 
   let footerClass = classNames({
     'Footer': true,
-    'Footer_hidden': todosAmount === 0
+    'Footer--hidden': todosAmount === 0
   });
 
   const noCompleted = (todosAmount - incompleteAmount) === 0;
