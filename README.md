@@ -1,4 +1,4 @@
-# ReactJS Todo List
+# Todo list on ReactJS
 [Demo](https://bzaitsev.github.io/reactjs-todo-list/)
 
-Used ReactJS 16, Redux, Webpack 4.
+Powered by ReactJS, Redux, Webpack.
