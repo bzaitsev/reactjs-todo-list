@@ -15,7 +15,6 @@ html {
 body {
   width: 100%;
   max-width: 800px;
-  min-width: 550px;
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
@@ -45,23 +44,29 @@ button {
 .app {
   height: calc(100% - 40px);
   flex: 1 1 200px;
-  padding: 5vh 10px 15px;
-}
-.site-footer {
-  margin: 10px 0;
-  height: 45px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center; 
+  padding: 5vh 10px 0;
 }
 .center-align {
   display: flex;
   align-items: center; // V for line
   justify-content: center; // H for line
 }
-.site-footer .inline-logo {
-  width: 16px;
-  margin: 0 5px;
-  vertical-align: text-bottom;
+.site-footer {
+  margin: 25px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; 
+  .copyright {
+    margin-top: 5px;
+  }
+  .inline-logo {
+    width: 16px;
+    margin: 0 5px;
+    vertical-align: text-bottom;
+  }
+  .logos {
+    flex-wrap: wrap;
+    line-height: 20px;
+  }
 }

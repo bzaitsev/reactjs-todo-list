@@ -1,11 +1,11 @@
 .Footer {
   position: relative;
   border-top: 1px solid var(--gray-color);
-  height: var(--hearder-height);
   padding: var(--todo-list-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   &::before {
     content: '';
@@ -38,6 +38,7 @@
 .Footer button {
   height: 30px;
   min-width: 50px;
+  margin-top: 5px;
   outline: none;
   cursor: pointer;
 
@@ -47,4 +48,15 @@
   &:not(:first-of-type) {
     margin-left: 5px;
   }
+}
+
+.Footer__items-amount {
+  margin-right: 10px;
+}
+
+.Footer__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  margin-bottom: 5px;
 }

@@ -7,7 +7,8 @@
 
 .Homepage__List {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 260px));
 
   li {
     display: flex;

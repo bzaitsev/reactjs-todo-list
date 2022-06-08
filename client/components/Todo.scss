@@ -2,6 +2,7 @@
   position: relative;
   padding: 8px var(--todo-list-padding);
   cursor: default;
+  line-height: 20px;
 
   &:not(:last-child) {
     border-bottom: 1px solid var(--gray-color);
