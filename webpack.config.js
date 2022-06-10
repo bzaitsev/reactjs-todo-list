@@ -3,7 +3,7 @@ const path = require('path'),
       HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const CLIENT_PATH = path.resolve(__dirname, 'client'),
-      PUBLIC_PATH = path.resolve(__dirname, 'public'),
+      PUBLIC_PATH = path.resolve(__dirname, 'docs'),
       normalizeCssPath = path.resolve(__dirname, 'node_modules/normalize.css/');
 
 let config = {
