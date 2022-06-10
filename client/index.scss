@@ -21,6 +21,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+h1 {
+  font-size: unset;
+}
 ul, ol {
   margin: 0;
   padding: 0;
@@ -44,7 +47,7 @@ button {
 .app {
   height: calc(100% - 40px);
   flex: 1 1 200px;
-  padding: 5vh 10px 0;
+  padding: 35px 10px 0;
 }
 .center-align {
   display: flex;
@@ -69,4 +72,12 @@ button {
     flex-wrap: wrap;
     line-height: 20px;
   }
+}
+.gradient-text {  
+  background: linear-gradient(45deg, #b800b8, Violet, #ff4848,  #ffc100, #fffa00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 1px Violet);
+  font-size: 2.5em;
 }

@@ -18,7 +18,7 @@ const TodoPage = ({todo}) => {
     <div className='TodoPage'>
       <Link to="/">&lt; Back</Link>
       <h1>
-        {todo.title} 
+        <span className="gradient-text">{todo.title}</span> 
       </h1>
       <div className="TodoPage__Todo">
         <Header />

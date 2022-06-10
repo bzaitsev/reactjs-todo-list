@@ -25,7 +25,7 @@ const HomePage = ({ todos, dispatch }) => {
 
   return (
     <div className='HomePage'>
-      <h1>All todos</h1>
+      <h1><span className="gradient-text">Todo lists</span></h1>
   
       <ul className="Homepage__List">
         {todos.map(todo => (
