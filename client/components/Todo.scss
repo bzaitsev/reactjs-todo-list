@@ -43,3 +43,17 @@
 .Todo__remove-btn {
   font-size: 14px;
 }
+.Todo__toolbar button {
+  border: var(--button-border);
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-background-color);
+  &:hover:not(:disabled) {
+    background-color: var(--button-hover-background-color);
+  }
+}
+
+@media (hover:none) {
+  .Todo .Todo__toolbar {
+    display: block;
+  }
+}

@@ -1,4 +1,10 @@
-  
+:root {
+  --button-border: 1px solid #cacaca;
+  --button-border-radius: 2px;
+  --button-background-color: #f0f0f0;
+  --button-hover-background-color: #f4f4f4;
+}
+
 *,  
 *::before,
 *::after {
@@ -70,6 +76,15 @@ button {
   .logos {
     flex-wrap: wrap;
     line-height: 20px;
+  }
+  .redux-logo {
+    filter: drop-shadow(0px 0px 1px #9f80d0);
+  }
+  .react-logo {
+    filter: drop-shadow(0px 0px 1px #222);
+  }
+  .webpack-logo {
+    filter: drop-shadow(0px 0px 3px #90d7fb);
   }
 }
 .gradient-text {  

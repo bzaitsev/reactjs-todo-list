@@ -3,7 +3,7 @@ import { createReducer } from "@reduxjs/toolkit";
 
 const initialList = {
   id: shortid.generate(),
-  title: "New list",
+  title: "List 1",
   editDate: Date.now(),
   items: []
 };
@@ -14,7 +14,7 @@ const todos = createReducer([initialList], {
       ...state,
       {
         id: shortid.generate(),
-        title: "New list",
+        title: `List ${state.length + 1}`,
         editDate: Date.now(),
         items: []
       }

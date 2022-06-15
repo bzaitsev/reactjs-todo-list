@@ -32,8 +32,7 @@ const Footer = ({todosAmount, incompleteAmount, clearCompleted}) => {
         </FilterLink>
         <button 
           type="button" 
-          disabled={noCompleted} 
-          className="Footer__btn-link" 
+          disabled={noCompleted}
           onClick={() => clearCompleted(listId)} >Clear completed</button>
       </div>
     </footer>

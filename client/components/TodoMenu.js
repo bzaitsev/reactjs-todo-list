@@ -105,8 +105,8 @@ const TodoMenu = function({dispatch, listId, title}) {
           <TextField autoFocus label="Title" required className="input" error={titleInvalid} value={listTitle} onChange={onListTitleChange}/>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onDialogSave} color="primary" variant="contained">Save</Button>
           <Button onClick={onDialogClose} color="secondary" variant="contained">Cancel</Button>
+          <Button onClick={onDialogSave} color="primary" variant="contained">Save</Button>
         </DialogActions>
       </Dialog>          
     </div>

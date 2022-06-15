@@ -41,7 +41,13 @@
   margin-top: 5px;
   outline: none;
   cursor: pointer;
-
+  border: var(--button-border);
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-background-color);
+  
+  &:hover:not(:disabled) {
+    background-color: var(--button-hover-background-color);
+  }
   &:disabled {
     cursor: default;
   }
