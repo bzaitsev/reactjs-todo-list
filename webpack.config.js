@@ -1,5 +1,5 @@
 const path = require('path'), 
-      ExtractTextPlugin = require("extract-text-webpack-plugin"),
+      MiniCssExtractPlugin = require("mini-css-extract-plugin"),
       HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const CLIENT_PATH = path.resolve(__dirname, 'client'),
@@ -14,12 +14,15 @@ let config = {
     publicPath: '/'
   },
   devServer: {
-    overlay: true,
-    contentBase: PUBLIC_PATH,
+    static: {
+      directory: PUBLIC_PATH
+    },
     historyApiFallback: true
   },
   plugins: [
-    new ExtractTextPlugin('build/app.css'),
+    new MiniCssExtractPlugin({
+      filename: 'build/app.css'
+    }),
     new HtmlWebPackPlugin({
       template: path.resolve(CLIENT_PATH, 'index.html'),
       filename: "index.html"
@@ -32,7 +35,7 @@ let config = {
         include: [
           CLIENT_PATH
         ],
-        loader: 'file-loader'
+        type: 'asset/resource'
       }, {
         test: /\.(js|jsx)$/,
         include: [
@@ -45,10 +48,11 @@ let config = {
           CLIENT_PATH,
           normalizeCssPath
         ],
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader"
+        ],
       }, {
         test: /\.html$/,
         include: [
