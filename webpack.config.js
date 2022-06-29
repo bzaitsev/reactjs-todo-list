@@ -15,7 +15,7 @@ module.exports = (env, options) => {
     output: {
       path: PUBLIC_PATH,
       filename: 'build/app.js',
-      publicPath: '/'
+      publicPath: ''
     },
     devServer: {
       static: {
