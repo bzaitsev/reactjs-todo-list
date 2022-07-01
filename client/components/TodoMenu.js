@@ -101,12 +101,12 @@ const TodoMenu = function({dispatch, listId, title}) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description">
         <DialogTitle id="alert-dialog-title">{"Rename title"}</DialogTitle>
-        <DialogContent>
+        <DialogContent className='filed-title'>
           <TextField autoFocus label="Title" required className="input" error={titleInvalid} value={listTitle} onChange={onListTitleChange}/>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onDialogClose} color="secondary" variant="contained">Cancel</Button>
           <Button onClick={onDialogSave} color="primary" variant="contained">Save</Button>
+          <Button onClick={onDialogClose} color="secondary" variant="contained">Cancel</Button>
         </DialogActions>
       </Dialog>          
     </div>

@@ -23,7 +23,7 @@ const AddTodo = ({ dispatch }) => {
   
   return (
     <form onSubmit={onSubmit} className="AddTodo">
-      <input type="text" required placeholder="Type a task and press <Enter>..." className="AddTodo__input" ref={inputRef}/>
+      <input type="text" required placeholder="Type a task and press Enter..." className="AddTodo__input" ref={inputRef}/>
     </form>
   );
 };

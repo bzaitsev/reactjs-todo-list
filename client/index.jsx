@@ -1,6 +1,6 @@
 /* Docs
-  https://material-ui.com/
-  https://fontawesome.com/icons?d=gallery&q=list&m=free
+  UI - https://material-ui.com/
+  Icons - https://fontawesome.com/v5/search?m=free
 */
 import React from 'react';
 import { render } from 'react-dom';
