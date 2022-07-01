@@ -1,8 +1,7 @@
 import React from 'react';
-import {
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
 // App
 import Header from './../Header';
 import VisibleTodoList from './../VisibleTodoList';
@@ -14,9 +13,9 @@ const TodoPage = ({todo}) => {
     window.location.href = '/';
   }
 
-  return (
+  return (<>
+    <Link to="/" className="TodoPage__btn-back"><Button variant="outlined" size="small"><i className="icon-back fas fa-angle-left"></i> Back</Button></Link>
     <div className='TodoPage'>
-      <Link to="/">&lt; Back</Link>
       <h1>
         <span className="gradient-text">{todo.title}</span> 
       </h1>
@@ -26,7 +25,7 @@ const TodoPage = ({todo}) => {
         <DynamicFooter />
       </div>
     </div>
-  );
+  </>);
 };
 
 const mapStateToProps = state => ({
