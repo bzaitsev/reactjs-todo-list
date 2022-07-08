@@ -18,6 +18,7 @@ const TodoPage = ({todo}) => {
     <div className='TodoPage'>
       <h1>
         <span className="gradient-text">{todo.title}</span> 
+        <div className='megafancy'>Just do it!</div>
       </h1>
       <div className="TodoPage__Todo">
         <Header />

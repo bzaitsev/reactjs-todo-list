@@ -34,21 +34,26 @@
 }
 .Todo__toolbar {
   display: none;
+  cursor: pointer;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: var(--todo-list-padding);
-  cursor: pointer;
-}
-.Todo__remove-btn {
-  font-size: 14px;
-}
-.Todo__toolbar button {
-  border: var(--button-border);
-  border-radius: var(--button-border-radius);
-  background-color: var(--button-background-color);
-  &:hover:not(:disabled) {
+  color: var(--color);
+
+  button {
+    color: inherit;
+  }
+  .button {
+    border: var(--button-border);
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-background-color);
+  }
+  .button:hover:not(:disabled) {
     background-color: var(--button-hover-background-color);
+  }
+  .MuiIconButton-root {
+    padding: 8px;
   }
 }
 

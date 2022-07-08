@@ -1,7 +1,3 @@
-/* Docs
-  UI - https://material-ui.com/
-  Icons - https://fontawesome.com/v5/search?m=free
-*/
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import IconButton from '@material-ui/core/IconButton';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 // App
 import './Todo.scss';
 
@@ -22,10 +24,10 @@ class Todo extends React.Component {
         <input type="checkbox" checked={this.props.completed} readOnly />{this.props.text}
 
         <div className="Todo__toolbar">
-          <button 
+          <IconButton 
             title="Remove item"
             className="Todo__remove-btn"
-            onClick={this.props.onRemove}>X</button>
+            onClick={this.props.onRemove}><HighlightOffIcon fontSize="small"/></IconButton>
         </div>
       </li>
     );

@@ -7,7 +7,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
 
-  &::before {
+  &::after {
     content: '';
     z-index: -1;
     position: absolute;
@@ -38,13 +38,16 @@
 .Footer button {
   height: 30px;
   min-width: 50px;
-  margin-top: 5px;
+  margin-top: 3px;
   outline: none;
   cursor: pointer;
   border: var(--button-border);
   border-radius: var(--button-border-radius);
   background-color: var(--button-background-color);
   
+  &:not(:disabled) {
+    color: var(--color);
+  }
   &:hover:not(:disabled) {
     background-color: var(--button-hover-background-color);
   }
@@ -58,6 +61,16 @@
 
 .Footer__items-amount {
   margin-right: 10px;
+  flex-grow: 1;
+  padding: 0;
+  position: relative;
+  top: 2px;
+  font-size: 0.875rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
 }
 
 .Footer__toolbar {
@@ -65,4 +78,6 @@
   flex-wrap: wrap;
   justify-content: end;
   margin-bottom: 5px;
+  align-items: center;
+  width: 100%;
 }

@@ -1,6 +1,9 @@
 .TodoPage {
   h1 {
     text-align: center;
+    .megafancy {
+      font-size: 12px;
+    }
   }
 }
 .TodoPage__Todo {
@@ -13,7 +16,11 @@
   position: absolute;
   top: 10px;
   text-decoration: none;
+  color: var(--color);
   .icon-back {
     margin-right: 3px;
+  }
+  button {
+    color: inherit;
   }
 }

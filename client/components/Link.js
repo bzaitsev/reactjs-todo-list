@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
 
 const Link = ({ active, children, onClick }) => (
-  <button
-     onClick={onClick}
-     disabled={active}
-  >{children}</button>
+  <Button 
+    variant="outlined"
+    onClick={onClick}
+    disabled={active}
+  >{children}</Button>
 );
 
 Link.propTypes = {

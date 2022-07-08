@@ -3,6 +3,8 @@ import classNames from 'classnames';
 import {
   useParams
 } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+
 import FilterLink from '../containers/FilterLink';
 import { VisibilityFilters } from '../actions';
 import './Footer.scss'; 
@@ -19,8 +21,8 @@ const Footer = ({todosAmount, incompleteAmount, clearCompleted}) => {
 
   return (
     <footer className={footerClass}>
-      <div className="Footer__items-amount">{incompleteAmount} item(s) left</div>
       <div className='Footer__toolbar'>
+        <div className="Footer__items-amount">{incompleteAmount} item(s) left</div>
         <FilterLink filter={VisibilityFilters.SHOW_ALL}>
           All
         </FilterLink>
@@ -30,10 +32,10 @@ const Footer = ({todosAmount, incompleteAmount, clearCompleted}) => {
         <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>
           Completed
         </FilterLink>
-        <button 
-          type="button" 
+        <Button 
+          variant="outlined"
           disabled={noCompleted}
-          onClick={() => clearCompleted(listId)} >Clear completed</button>
+          onClick={() => clearCompleted(listId)} >Clear completed</Button>
       </div>
     </footer>
   );
