@@ -8,12 +8,13 @@ import './App.scss';
 import TodoPage from './../containers/pages/TodoPage';
 import HomePage from './../containers/pages/HomePage';
 import NotFound from './../containers/pages/NotFound';
+import './../config.js';
 
 const App = () => (
   <Router>
      <Switch>
-       <Route path="/todolist/:listId" component={TodoPage}/>
-       <Route path="/" component={HomePage}/>
+       <Route path={`${window.appConfig.root}todolist/:listId`} component={TodoPage}/>
+       <Route path={window.appConfig.root} component={HomePage}/>
        <Route component={NotFound} />
      </Switch>
   </Router>

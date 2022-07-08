@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
 // App
 import Header from './../Header';
 import VisibleTodoList from './../VisibleTodoList';
@@ -10,11 +10,11 @@ import './TodoPage.scss';
 
 const TodoPage = ({todo}) => {
   if (!todo) {
-    window.location.href = '/';
+    window.location.href = window.appConfig.root;
   }
 
   return (<>
-    <Link to="/" className="TodoPage__btn-back"><Button variant="outlined" size="small"><i className="icon-back fas fa-angle-left"></i> Back</Button></Link>
+    <Link to={window.appConfig.root} className="TodoPage__btn-back"><Button variant="outlined" size="small"><i className="icon-back fas fa-angle-left"></i> Back</Button></Link>
     <div className='TodoPage'>
       <h1>
         <span className="gradient-text">{todo.title}</span> 
