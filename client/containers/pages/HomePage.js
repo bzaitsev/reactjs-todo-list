@@ -30,7 +30,7 @@ const HomePage = ({ todos, dispatch }) => {
       <ul className="Homepage__List">
         {todos.map(todo => (
           <li key={todo.id}>
-            <Link className="HomePage__Item" to={`/todolist/${todo.id}`} onClick={onItemClick} data-id={todo.id}>
+            <Link className="HomePage__Item" to={`${window.appConfig.root}todolist/${todo.id}`} onClick={onItemClick} data-id={todo.id}>
               <i className="fas fa-list-ul list-icon"></i>
               <div className="info">
                 <span className="title">{todo.title}</span>
