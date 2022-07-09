@@ -9,6 +9,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
+import CloseIcon from '@material-ui/icons/Close';
 // App
 import './TodoMenu.scss'; 
 import { removeList, renameList } from '../actions';
@@ -68,13 +69,24 @@ const TodoMenu = function({dispatch, listId, title}) {
     setOpen(false);
   }; 
 
-  //
+  // Other
   const onListTitleChange = event => {
     let value = event.target.value;
     setTitleInvalid(!value);
     setListTitle(value);
-  } 
+  };
+
+  const onClearClick = () => {
+    setListTitle('');
+    setTitleInvalid(true);
+    titleFieldRef.current.focus();
+  };
   
+  const titleFieldRef = React.createRef();
+  const CloseBtn = listTitle 
+    ? <CloseIcon className='btn-clear' onClick={onClearClick} fontSize='small'/>
+    : null;
+
   return ( 
     <div className='TodoMenu'>
       <Button className="menu-btn" aria-controls={menuId} aria-haspopup="true" onClick={onMenuClick}>
@@ -92,7 +104,7 @@ const TodoMenu = function({dispatch, listId, title}) {
       </Menu>  
 
       <Dialog
-        className="TodoMenu__RenameDialog"
+        className="TodoMenu__renameDialog"
         fullWidth={true}
         maxWidth='xs'
         open={open}
@@ -101,8 +113,13 @@ const TodoMenu = function({dispatch, listId, title}) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description">
         <DialogTitle id="alert-dialog-title">{"Rename title"}</DialogTitle>
-        <DialogContent className='filed-title'>
-          <TextField autoFocus label="Title" required className="input" error={titleInvalid} value={listTitle} onChange={onListTitleChange}/>
+        <DialogContent className='title-field'>
+          <TextField autoFocus required label="Title" className="text-field"
+            inputRef={titleFieldRef}
+            error={titleInvalid} 
+            value={listTitle} 
+            onChange={onListTitleChange}/>
+          {CloseBtn}
         </DialogContent>
         <DialogActions>
           <Button onClick={onDialogSave} color="primary" variant="contained">Save</Button>

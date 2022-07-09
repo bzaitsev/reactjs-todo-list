@@ -1,11 +1,18 @@
-.TodoMenu__RenameDialog {
-  .input {
+.TodoMenu__renameDialog {}
+
+.TodoMenu__renameDialog .title-field {
+  padding-top: 0;
+  position: relative;
+  .text-field {
     width: 100%;
   }
   .MuiInput-input {
+    padding-right: 18px;
     display: block;
   }
-  .filed-title {
-    padding-top: 0;
+  .btn-clear {
+    position: absolute;
+    right: 24px;
+    bottom: 15px;
   }
 }
