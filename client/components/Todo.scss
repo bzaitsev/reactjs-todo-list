@@ -3,6 +3,8 @@
   padding: 8px var(--todo-list-padding);
   cursor: default;
   line-height: 20px;
+  display: flex;  
+  align-items: center;
 
   &:not(:last-child) {
     border-bottom: 1px solid var(--gray-color);
@@ -13,7 +15,13 @@
     }
   }
 }
-
+.Todo__checkbox {
+  flex-shrink: 0;
+}
+.Todo__text {
+  flex-grow: 1;
+  word-break: break-word;
+}
 .Todo--completed {
   text-decoration: line-through;
   color: #bbb;
@@ -36,9 +44,9 @@
   display: none;
   cursor: pointer;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: var(--todo-list-padding);
+  right: 2px;
+  background: #fff;
+  border-radius: 50%;
   color: var(--color);
 
   button {
@@ -60,5 +68,8 @@
 @media (hover:none) {
   .Todo .Todo__toolbar {
     display: block;
+    margin: -8px -8px -8px 0;
+    position: relative;
+    right: unset;
   }
 }
