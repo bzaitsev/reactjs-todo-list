@@ -9,15 +9,15 @@ const CLIENT_PATH = path.resolve(__dirname, 'client'),
 const { htmlWebpackPluginTemplateCustomizer } = require('template-ejs-loader');
 
 module.exports = (env, options) => {
-  let production = options.mode === 'production';
+  let isProduction = options.mode === 'production';
   
   let config = {
     entry: path.resolve(CLIENT_PATH, 'index.jsx'),
-    devtool: production ? 'source-map': 'eval-source-map',
+    devtool: isProduction ? 'source-map': 'eval-source-map',
     output: {
       path: PUBLIC_PATH,
       filename: 'build/app.js',
-      publicPath: production ? '': '/'
+      publicPath: isProduction ? '': '/'
     },
     devServer: {
       static: {
@@ -32,7 +32,7 @@ module.exports = (env, options) => {
           templatePath: path.resolve(CLIENT_PATH, 'index.ejs'),
           templateEjsLoaderOption: {
             data: {
-              ga: production
+              ga: isProduction
             }
           }
         })
@@ -55,7 +55,7 @@ module.exports = (env, options) => {
             normalizeCssPath
           ],
           use: [
-            production ? MiniCssExtractPlugin.loader: 'style-loader',
+            isProduction ? MiniCssExtractPlugin.loader: 'style-loader',
             "css-loader",
             "sass-loader"
           ],
@@ -68,7 +68,7 @@ module.exports = (env, options) => {
     }
   };
 
-  if (production) {
+  if (isProduction) {
     config.plugins.push(new MiniCssExtractPlugin({
       filename: 'build/app.css'
     }));
