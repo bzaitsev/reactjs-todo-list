@@ -6,6 +6,8 @@ const CLIENT_PATH = path.resolve(__dirname, 'client'),
       PUBLIC_PATH = path.resolve(__dirname, 'docs'),
       normalizeCssPath = path.resolve(__dirname, 'node_modules/normalize.css/');
 
+const { htmlWebpackPluginTemplateCustomizer } = require('template-ejs-loader');
+
 module.exports = (env, options) => {
   let production = options.mode === 'production';
   
@@ -25,23 +27,26 @@ module.exports = (env, options) => {
     },
     plugins: [
       new HtmlWebPackPlugin({
-        template: path.resolve(CLIENT_PATH, 'index.html'),
-        filename: "index.html"
+        filename: "index.html",
+        template: htmlWebpackPluginTemplateCustomizer({
+          templatePath: path.resolve(CLIENT_PATH, 'index.ejs'),
+          templateEjsLoaderOption: {
+            data: {
+              ga: production
+            }
+          }
+        })
       })
     ],
     module: {
       rules: [
         {
           test: /\.(gif|png|jpe?g|svg|ico|eot|ttf|woff|woff2|otf)$/i,
-          include: [
-            CLIENT_PATH
-          ],
+          include: [CLIENT_PATH],
           type: 'asset/resource'
         }, {
           test: /\.(js|jsx)$/,
-          include: [
-            CLIENT_PATH
-          ],
+          include: [CLIENT_PATH],
           loader: 'babel-loader'
         }, {
           test: /\.scss$|\.css$/,
@@ -55,11 +60,9 @@ module.exports = (env, options) => {
             "sass-loader"
           ],
         }, {
-          test: /\.html$/,
-          include: [
-            CLIENT_PATH
-          ],
-          loader: "html-loader"
+          test: /\.ejs$/,
+          include: [CLIENT_PATH],
+          use: ["html-loader", 'template-ejs-loader']
         }
       ]
     }
