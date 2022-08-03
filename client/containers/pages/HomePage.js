@@ -23,9 +23,11 @@ const HomePage = ({ todos, dispatch }) => {
     event.preventDefault();
   }; 
 
+  let h1Content = 'Todo lists';
+
   return (
     <div className='HomePage'>
-      <h1><span className="gradient-text">Todo lists</span></h1>
+      <h1><span className="gradient-text shine" data-content={h1Content}>{h1Content}</span></h1>
   
       <ul className="Homepage__List">
         {todos.map(todo => (
