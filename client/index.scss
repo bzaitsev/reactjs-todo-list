@@ -127,6 +127,7 @@ button:not(:disabled) {
   width: 100%;
   background: linear-gradient(45deg, rgba(255,255,255,0) 45%,rgba(255,255,255,0.8) 50%,rgba(255,255,255,0) 55%,rgba(255,255,255,0) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   mix-blend-mode: screen;
   background-size: 200%;
