@@ -2,7 +2,7 @@
 
 [Demo](https://bzaitsev.github.io/reactjs-todo-list/)
 
-**Tech stack:** React, Redux, Webpack, Material UI.
+**Tech stack**: React, Redux, Webpack, Material UI.
 
 ## Docs
 - [Material UI](https://v4.mui.com/getting-started/installation/)
