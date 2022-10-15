@@ -1,17 +1,59 @@
-const path = require('path'), 
-      MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-      HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const {htmlWebpackPluginTemplateCustomizer} = require('template-ejs-loader');
+const {GenerateSW} = require('workbox-webpack-plugin');
 
-const CLIENT_PATH = path.resolve(__dirname, 'client'),
-      PUBLIC_PATH = path.resolve(__dirname, 'docs'),
-      normalizeCssPath = path.resolve(__dirname, 'node_modules/normalize.css/');
+const CLIENT_PATH = path.resolve(__dirname, 'client');
+const PUBLIC_PATH = path.resolve(__dirname, 'docs');
+const normalizeCssPath = path.resolve(__dirname, 'node_modules/normalize.css/');
 
-const { htmlWebpackPluginTemplateCustomizer } = require('template-ejs-loader');
+let webpackPwaManifest = new WebpackPwaManifest({
+  name: "Todo list on React",
+  short_name: "Todo list",
+  display: "standalone",
+  start_url: ".",
+  background_color: "#fff",
+  description: "",
+  crossorigin: 'use-credentials',
+  icons: [{
+    src: path.resolve(CLIENT_PATH, 'images/manifest-512.png'),
+    sizes: [16, 48, 128, 192, 512]
+  }]
+});
+
+let generateSW = new GenerateSW({
+  clientsClaim: true,
+  skipWaiting: true,
+  maximumFileSizeToCacheInBytes: 15728640 // 15 MB
+});
 
 module.exports = (env, options) => {
   let isProduction = options.mode === 'production';
+  let plugins = [];
   
+  let htmlWebPackPlugin = new HtmlWebPackPlugin({
+    filename: "index.html",
+    template: htmlWebpackPluginTemplateCustomizer({
+      templatePath: path.resolve(CLIENT_PATH, 'index.ejs'),
+      templateEjsLoaderOption: {
+        data: { isProduction }
+      }
+    })
+  });
+
+  plugins.push(
+    htmlWebPackPlugin, 
+    webpackPwaManifest
+  );
+
+  if (isProduction) {
+    plugins.push(generateSW);
+  }
+
   let config = {
+    plugins,
     entry: path.resolve(CLIENT_PATH, 'index.jsx'),
     devtool: isProduction ? 'source-map': 'eval-source-map',
     output: {
@@ -25,19 +67,6 @@ module.exports = (env, options) => {
       },
       historyApiFallback: true
     },
-    plugins: [
-      new HtmlWebPackPlugin({
-        filename: "index.html",
-        template: htmlWebpackPluginTemplateCustomizer({
-          templatePath: path.resolve(CLIENT_PATH, 'index.ejs'),
-          templateEjsLoaderOption: {
-            data: {
-              ga: isProduction
-            }
-          }
-        })
-      })
-    ],
     module: {
       rules: [
         {
