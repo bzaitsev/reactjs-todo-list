@@ -26,6 +26,7 @@ let webpackPwaManifest = new WebpackPwaManifest({
 });
 
 let generateSW = new GenerateSW({
+  navigateFallback: 'index.html',
   clientsClaim: true,
   maximumFileSizeToCacheInBytes: 15728640, // 15 MB
   runtimeCaching: [{
