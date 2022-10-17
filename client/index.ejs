@@ -15,11 +15,13 @@
   
   <link rel="shortcut icon" type="image/x-icon" href="./images/react-icon.ico">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Syncopate" />
 
+  <% if (isProduction || isServiceWorker) { %>
+    <script src="./sw-register.js"></script>
+  <% } %>
+  
   <% if (isProduction) { %>
-    <script src="./register-sw.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C4P9T8GWVR"></script>
     <script>

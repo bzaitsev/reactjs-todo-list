@@ -5,9 +5,11 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const {htmlWebpackPluginTemplateCustomizer} = require('template-ejs-loader');
 const {GenerateSW} = require('workbox-webpack-plugin');
 
-const CLIENT_PATH = path.resolve(__dirname, 'client');
+const CLIENT_PATH = path.resolve(__dirname, 'client/');
 const PUBLIC_PATH = path.resolve(__dirname, 'docs');
 const normalizeCssPath = path.resolve(__dirname, 'node_modules/normalize.css/');
+
+let isServiceWorker = false;
 
 let webpackPwaManifest = new WebpackPwaManifest({
   name: "Todo list on React",
@@ -17,6 +19,7 @@ let webpackPwaManifest = new WebpackPwaManifest({
   background_color: "#fff",
   description: "",
   crossorigin: 'use-credentials',
+  ios: false,
   icons: [{
     src: path.resolve(CLIENT_PATH, 'images/manifest-512.png'),
     sizes: [16, 48, 128, 192, 512]
@@ -25,8 +28,24 @@ let webpackPwaManifest = new WebpackPwaManifest({
 
 let generateSW = new GenerateSW({
   clientsClaim: true,
-  skipWaiting: true,
-  maximumFileSizeToCacheInBytes: 15728640 // 15 MB
+  maximumFileSizeToCacheInBytes: 15728640, // 15 MB
+  runtimeCaching: [{
+    urlPattern: /^https:\/\/fonts\.googleapis\.com/,
+    handler: 'CacheFirst',
+    options: {cacheName: 'fonts.googleapis.com'}
+  }, {
+    urlPattern: /^https:\/\/fonts\.gstatic\.com/,
+    handler: "CacheFirst",
+    options: {cacheName: 'fonts.gstatic.com'}
+  }, {
+    urlPattern: /\/manifest.*\.json/,
+    handler: "StaleWhileRevalidate",
+    options: {cacheName: 'manifest'}
+  }, {
+    urlPattern: /\/*\.png/,
+    handler: "StaleWhileRevalidate",
+    options: {cacheName: 'images'}
+  }]
 });
 
 module.exports = (env, options) => {
@@ -38,18 +57,20 @@ module.exports = (env, options) => {
     template: htmlWebpackPluginTemplateCustomizer({
       templatePath: path.resolve(CLIENT_PATH, 'index.ejs'),
       templateEjsLoaderOption: {
-        data: { isProduction }
+        data: { isProduction, isServiceWorker }
       }
     })
   });
 
   plugins.push(
-    htmlWebPackPlugin, 
-    webpackPwaManifest
+    htmlWebPackPlugin
   );
 
-  if (isProduction) {
-    plugins.push(generateSW);
+  if (isProduction || isServiceWorker) {
+    plugins.push(
+      webpackPwaManifest,
+      generateSW
+    );
   }
 
   let config = {
