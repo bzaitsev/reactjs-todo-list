@@ -30,12 +30,9 @@ let generateSW = new GenerateSW({
   maximumFileSizeToCacheInBytes: 15728640, // 15 MB
   runtimeCaching: [{
     urlPattern: /^https:\/\/fonts\.googleapis\.com/,
-    handler: 'CacheFirst',
+    handler: 'StaleWhileRevalidate',
     options: {
-      cacheName: 'fonts.googleapis.com',
-      expiration: {
-        maxAgeSeconds: treeMonths
-      }
+      cacheName: 'fonts.googleapis.com'
     }
   }, {
     urlPattern: /^https:\/\/fonts\.gstatic\.com/,
