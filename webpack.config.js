@@ -8,8 +8,7 @@ const {GenerateSW} = require('workbox-webpack-plugin');
 const CLIENT_PATH = path.resolve(__dirname, 'client/');
 const PUBLIC_PATH = path.resolve(__dirname, 'docs');
 const normalizeCssPath = path.resolve(__dirname, 'node_modules/normalize.css/');
-
-let isServiceWorker = false;
+const treeMonths = 60 * 60 * 24 * 90;
 
 let webpackPwaManifest = new WebpackPwaManifest({
   name: "Todo list on React",
@@ -32,11 +31,21 @@ let generateSW = new GenerateSW({
   runtimeCaching: [{
     urlPattern: /^https:\/\/fonts\.googleapis\.com/,
     handler: 'CacheFirst',
-    options: {cacheName: 'fonts.googleapis.com'}
+    options: {
+      cacheName: 'fonts.googleapis.com',
+      expiration: {
+        maxAgeSeconds: treeMonths
+      }
+    }
   }, {
     urlPattern: /^https:\/\/fonts\.gstatic\.com/,
     handler: "CacheFirst",
-    options: {cacheName: 'fonts.gstatic.com'}
+    options: {
+      cacheName: 'fonts.gstatic.com',
+      expiration: {
+        maxAgeSeconds: treeMonths
+      }
+    }
   }, {
     urlPattern: /\/manifest.*\.json/,
     handler: "StaleWhileRevalidate",
@@ -49,39 +58,34 @@ let generateSW = new GenerateSW({
 });
 
 module.exports = (env, options) => {
-  let isProduction = options.mode === 'production';
-  let plugins = [];
-  
+  let production = options.mode === 'production';
+
   let htmlWebPackPlugin = new HtmlWebPackPlugin({
     filename: "index.html",
     template: htmlWebpackPluginTemplateCustomizer({
       templatePath: path.resolve(CLIENT_PATH, 'index.ejs'),
       templateEjsLoaderOption: {
-        data: { isProduction, isServiceWorker }
+        data: { 
+          production, 
+          pwa: env.pwa || false
+        }
       }
     })
   });
 
-  plugins.push(
-    htmlWebPackPlugin
-  );
-
-  if (isProduction || isServiceWorker) {
-    plugins.push(
-      webpackPwaManifest,
-      generateSW
-    );
-  }
-
   let config = {
-    plugins,
-    entry: path.resolve(CLIENT_PATH, 'index.jsx'),
-    devtool: isProduction ? 'source-map': 'eval-source-map',
+    entry: {
+      app: path.resolve(CLIENT_PATH, 'index.jsx')
+    },
     output: {
       path: PUBLIC_PATH,
-      filename: 'build/app.js',
-      publicPath: isProduction ? '': '/'
+      filename: 'build/[name].js',
+      publicPath: production ? '': '/'
     },
+    plugins: [
+      htmlWebPackPlugin
+    ],
+    devtool: production ? 'source-map': 'eval-source-map',
     devServer: {
       static: {
         directory: PUBLIC_PATH
@@ -105,7 +109,7 @@ module.exports = (env, options) => {
             normalizeCssPath
           ],
           use: [
-            isProduction ? MiniCssExtractPlugin.loader: 'style-loader',
+            production ? MiniCssExtractPlugin.loader: 'style-loader',
             "css-loader",
             "sass-loader"
           ],
@@ -117,8 +121,15 @@ module.exports = (env, options) => {
       ]
     }
   };
+  
+  if (production || env.pwa) {
+    config.plugins.push(
+      webpackPwaManifest,
+      generateSW
+    );
+  }
 
-  if (isProduction) {
+  if (production) {
     config.plugins.push(new MiniCssExtractPlugin({
       filename: 'build/app.css'
     }));

@@ -5,6 +5,7 @@
   "main": "",
   "scripts": {
     "dev-server": "webpack-dev-server --mode development",
+    "dev-server-pwa": "webpack-dev-server --mode development --env pwa",
     "build-prod": "webpack --mode production"
   },
   "author": "",
