@@ -9,6 +9,7 @@
 - [Material UI icons](https://v4.mui.com/components/material-icons/)
 - [FA icons](https://fontawesome.com/v5/search?m=free)
 - [HtmlWebpackPlugin](https://github.com/jantimon/html-webpack-plugin#options)
+- [Webpack DevServer](https://webpack.js.org/configuration/dev-server)
 
 ## Style guide
 ### CSS selectors
