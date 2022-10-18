@@ -57,6 +57,7 @@ let generateSW = new GenerateSW({
 
 module.exports = (env, options) => {
   let production = options.mode === 'production';
+  let pwa = production || env.pwa || false;
 
   let htmlWebPackPlugin = new HtmlWebPackPlugin({
     filename: "index.html",
@@ -64,8 +65,7 @@ module.exports = (env, options) => {
       templatePath: path.resolve(CLIENT_PATH, 'index.ejs'),
       templateEjsLoaderOption: {
         data: { 
-          production, 
-          pwa: env.pwa || false
+          production, pwa
         }
       }
     })
@@ -120,7 +120,7 @@ module.exports = (env, options) => {
     }
   };
   
-  if (production || env.pwa) {
+  if (pwa) {
     config.plugins.push(
       webpackPwaManifest,
       generateSW
