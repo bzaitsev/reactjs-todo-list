@@ -1,4 +1,4 @@
-window.appConfig = {
+Object.assign(window.appConfig, {
   root: location.host.includes('localhost') ? '/': '/reactjs-todo-list/',
   dbName: 'App'
-};
+});

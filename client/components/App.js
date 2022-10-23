@@ -8,7 +8,6 @@ import './App.scss';
 import TodoPage from './../containers/pages/TodoPage';
 import HomePage from './../containers/pages/HomePage';
 import NotFound from './../containers/pages/NotFound';
-import './../config.js';
 
 const App = () => (
   <Router>

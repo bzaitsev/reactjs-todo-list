@@ -1,5 +1,5 @@
-if ('serviceWorker' in navigator) {
+if ((appConfig.pwa == 'true') && 'serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/service-worker.js');
+    navigator.serviceWorker.register(`${appConfig.root}service-worker.js`);
   });
 }
