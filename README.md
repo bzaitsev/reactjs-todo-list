@@ -18,6 +18,6 @@
 }
 ```
 
-[Material UI]: (https://v4.mui.com/getting-started/installation/)
-[Workbox]: (https://developer.chrome.com/docs/workbox/)
-[Dexie]: (https://dexie.org/)
+[Material UI]: <https://v4.mui.com/getting-started/installation>
+[Workbox]: <https://developer.chrome.com/docs/workbox>
+[Dexie]: <https://dexie.org>
