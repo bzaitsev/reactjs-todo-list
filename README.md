@@ -2,10 +2,9 @@
 
 [Demo](https://bzaitsev.github.io/reactjs-todo-list/)
 
-**Tech stack**: React, Redux, Webpack, Material UI.
+**Tech stack**: React, Redux, Webpack, [Material UI], [Workbox], [Dexie].
 
 ## Docs
-- [Material UI](https://v4.mui.com/getting-started/installation/)
 - [Material UI icons](https://v4.mui.com/components/material-icons/)
 - [FA icons](https://fontawesome.com/v5/search?m=free)
 - [HtmlWebpackPlugin](https://github.com/jantimon/html-webpack-plugin#options)
@@ -18,3 +17,7 @@
   .inner-element-modifier-value {}  
 }
 ```
+
+[Material UI]: (https://v4.mui.com/getting-started/installation/)
+[Workbox]: (https://developer.chrome.com/docs/workbox/)
+[Dexie]: (https://dexie.org/)
