@@ -83,6 +83,9 @@ module.exports = (env, options) => {
     plugins: [
       htmlWebPackPlugin
     ],
+    experiments: {
+      topLevelAwait: true
+    },
     devtool: production ? 'source-map': 'eval-source-map',
     devServer: {
       static: {
