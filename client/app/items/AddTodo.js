@@ -1,15 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import {
-  useParams
-} from "react-router-dom";
-// App
-import { addTodo } from '../actions';
-import './AddTodo.scss';
+import { useParams } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
-const AddTodo = ({ dispatch }) => {
-  let inputRef = React.createRef();
+import './AddTodo.scss';
+import { addItem } from '../store/todosSlice';
+
+const AddTodo = () => {
   const {listId} = useParams();
+  const dispatch = useDispatch();
+  let inputRef = React.createRef();
 
   const onSubmit = event => {
     event.preventDefault();
@@ -17,7 +16,7 @@ const AddTodo = ({ dispatch }) => {
 
     if (!inputElement.value.trim()) return;
 
-    dispatch(addTodo(inputElement.value, listId));
+    dispatch(addItem({text: inputElement.value, listId}));
     inputElement.value = '';
   };
   
@@ -29,4 +28,4 @@ const AddTodo = ({ dispatch }) => {
   );
 };
 
-export default connect()(AddTodo);
+export default AddTodo;

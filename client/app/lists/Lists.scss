@@ -1,11 +1,11 @@
-.HomePage {
+.Lists {
   h1 {
     text-align: center;
     margin-top: 0;
   }
 }
 
-.Homepage__List {
+.Lists__box {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(200px, 260px));
@@ -16,7 +16,7 @@
   }
 }
 
-.HomePage__Item {
+.Lists__Item {
   --icon-margin: 15px;
   --icon-size: 20px;
   --info-padding: 1px;
@@ -58,7 +58,7 @@
   }
 }
 
-.HomePage__NewItem {
+.Lists__NewItem {
   padding: 0;
   height: 56px;
   justify-content: center;

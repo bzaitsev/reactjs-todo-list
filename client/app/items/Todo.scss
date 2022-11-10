@@ -26,18 +26,18 @@
   text-decoration: line-through;
   color: #bbb;
 }
-.Todo_enter {
+.Todo-enter {
   opacity: 0;
   transition: opacity 500ms;
 }
-.Todo_enter-active {
+.Todo-enter-active {
   opacity: 1;
 }
-.Todo_leave {
+.Todo-exit {
   opacity: 1;
   transition: opacity 300ms;
 }
-.Todo_leave-active {
+.Todo-exit-active {
   opacity: 0;
 }
 .Todo__toolbar {

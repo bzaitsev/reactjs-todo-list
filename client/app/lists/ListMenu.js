@@ -3,18 +3,21 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import shortid from 'shortid';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import CloseIcon from '@material-ui/icons/Close';
-// App
-import './TodoMenu.scss'; 
-import { removeList, renameList } from '../actions';
 
-const TodoMenu = function({dispatch, listId, title}) {
+import './ListMenu.scss'; 
+import { 
+  removeList, renameList
+} from '../store/todosSlice';
+
+const ListMenu = ({listId, title}) => {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const menuId = shortid.generate();
   const [open, setOpen] = React.useState(false);
@@ -38,7 +41,7 @@ const TodoMenu = function({dispatch, listId, title}) {
   }; 
 
   const onMenuDelete = event => {
-    dispatch(removeList(listId));
+    dispatch(removeList({id: listId}));
     onMenuClose(event);
   };  
 
@@ -63,7 +66,7 @@ const TodoMenu = function({dispatch, listId, title}) {
     if (!listTitle) {
       return;
     } else {
-      dispatch(renameList(listId, listTitle));
+      dispatch(renameList({id: listId, title: listTitle}));
     }
     
     setOpen(false);
@@ -88,7 +91,7 @@ const TodoMenu = function({dispatch, listId, title}) {
     : null;
 
   return ( 
-    <div className='TodoMenu'>
+    <div className='ListMenu'>
       <Button className="menu-btn" aria-controls={menuId} aria-haspopup="true" onClick={onMenuClick}>
         <i className="fas fa-ellipsis-v menu-icon"></i> 
       </Button>      
@@ -104,7 +107,7 @@ const TodoMenu = function({dispatch, listId, title}) {
       </Menu>  
 
       <Dialog
-        className="TodoMenu__renameDialog"
+        className="ListMenu__renameDialog"
         fullWidth={true}
         maxWidth='xs'
         open={open}
@@ -130,11 +133,4 @@ const TodoMenu = function({dispatch, listId, title}) {
   );
 };
 
-const mapStateToProps = (state, props) => ({
-  listId: props.listId,
-  title: props.title
-});
-
-export default connect(
-  mapStateToProps
-)(TodoMenu);
+export default ListMenu;

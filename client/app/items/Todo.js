@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-// App
+
 import './Todo.scss';
 
 class Todo extends React.Component {
@@ -32,10 +32,11 @@ class Todo extends React.Component {
       </li>
     );
   }
-};
+}
 
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired
 };

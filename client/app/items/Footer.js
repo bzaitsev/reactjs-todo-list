@@ -1,23 +1,30 @@
 import React from 'react';
 import classNames from 'classnames';
-import {
-  useParams
-} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Button from '@material-ui/core/Button';
+import { useDispatch, useSelector } from 'react-redux';
 
-import FilterLink from '../containers/FilterLink';
-import { VisibilityFilters } from '../actions';
 import './Footer.scss'; 
+import FilterLink from './FilterLink';
+import { VisibilityFilters } from '../store/visibilitySlice';
+import { 
+  clearCompleted,
+  selectItemsByListId
+} from '../store/todosSlice';
 
-const Footer = ({todosAmount, incompleteAmount, clearCompleted}) => {
+const Footer = () => {
   const {listId} = useParams();
+  let items = useSelector(state => selectItemsByListId(state, listId));
+  let itemsAmount = items.length;
+  let incompleteAmount = items.filter(item => !item.completed).length;
+  const dispatch = useDispatch();
 
   let footerClass = classNames({
     'Footer': true,
-    'Footer--hidden': todosAmount === 0
+    'Footer--hidden': itemsAmount === 0
   });
 
-  const noCompleted = (todosAmount - incompleteAmount) === 0;
+  const noCompleted = (itemsAmount - incompleteAmount) === 0;
 
   return (
     <footer className={footerClass}>
@@ -35,7 +42,7 @@ const Footer = ({todosAmount, incompleteAmount, clearCompleted}) => {
         <Button 
           variant="outlined"
           disabled={noCompleted}
-          onClick={() => clearCompleted(listId)} >Clear completed</Button>
+          onClick={() => dispatch(clearCompleted({listId}))} >Clear completed</Button>
       </div>
     </footer>
   );

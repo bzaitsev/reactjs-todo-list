@@ -1,4 +1,4 @@
-.TodoPage {
+.Items {
   h1 {
     text-align: center;
     .megafancy {
@@ -6,13 +6,13 @@
     }
   }
 }
-.TodoPage__Todo {
+.Items__box {
   max-height: 100%;
   display: flex;
   flex-direction: column;  
   box-shadow: 0 0 5px 0 #bbb;
 }
-.TodoPage__btn-back {
+.Items__btn-back {
   position: absolute;
   top: 10px;
   text-decoration: none;
