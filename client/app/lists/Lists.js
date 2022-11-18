@@ -23,7 +23,7 @@ const Lists = () => {
     dispatch(setListId(event.currentTarget.dataset.id));
   }
 
-  let h1Content = 'Todo lists 1';
+  let h1Content = 'Todo lists 2';
 
   return (
     <div className='Lists'>
