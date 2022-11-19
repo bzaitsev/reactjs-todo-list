@@ -135,6 +135,34 @@ button:not(:disabled) {
   animation: shine 5s linear infinite;
 }
 
+.sw-update-msg.toastify {
+  padding: 6px 12px 6px 20px;
+  background: linear-gradient(to right, #2c2c2c, #424242);
+  color: rgba(255,255,255,.87);
+  cursor: default;
+
+  button {
+    color: #b2406a;
+    background: transparent;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: 'Roboto';
+    padding: 8px;
+    border-radius: 2px;
+    transition: background, color .3s;
+    &:first-of-type {
+      margin-left: 30px;
+    }
+    &:active {
+      background: rgba(178,64, 106, .1);
+    }
+    &:hover {
+      color: #ca4a7a;
+    }
+  }
+}
+
 @keyframes live-line {
   0% {background-size: 100% 100%;}
   50% {background-size: 50% 100%;}

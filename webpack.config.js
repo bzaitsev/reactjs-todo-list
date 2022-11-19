@@ -7,7 +7,6 @@ const {GenerateSW} = require('workbox-webpack-plugin');
 
 const CLIENT_PATH = path.resolve(__dirname, 'client/');
 const PUBLIC_PATH = path.resolve(__dirname, 'docs');
-const normalizeCssPath = path.resolve(__dirname, 'node_modules/normalize.css/');
 const treeMonths = 60 * 60 * 24 * 90;
 
 let webpackPwaManifest = new WebpackPwaManifest({
@@ -107,7 +106,8 @@ module.exports = (env, options) => {
           test: /\.scss$|\.css$/,
           include: [
             CLIENT_PATH,
-            normalizeCssPath
+            path.resolve(__dirname, 'node_modules/normalize.css/'),
+            path.resolve(__dirname, 'node_modules/toastify-js/')
           ],
           use: [
             production ? MiniCssExtractPlugin.loader: 'style-loader',
